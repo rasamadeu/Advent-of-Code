@@ -45,7 +45,7 @@ int main(){
 	char *line = malloc(sizeof *line);
 	size_t length;
 
-	fid = fopen("2015_2_input.dat", "rt");
+	fid = fopen("input/2015_2_input.dat", "rt");
 	while(getline(&line, &length, fid) != -1){
 		l = atoi(strtok(line, "x"));
 		w = atoi(strtok(NULL, "x"));

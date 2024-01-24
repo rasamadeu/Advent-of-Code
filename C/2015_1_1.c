@@ -6,7 +6,7 @@ int main(){
 	char c;
 	FILE *fid;
 
-	fid = fopen("2015_1_input.dat", "rt");
+	fid = fopen("input/2015_1_input.dat", "rt");
 	while(fscanf(fid, "%c", &c) == 1){
 		if(c == '('){
 			floor += 1;
