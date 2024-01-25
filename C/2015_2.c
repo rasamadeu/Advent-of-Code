@@ -62,5 +62,5 @@ int main(){
 		free(line);
 	}
 
-	return EXIT_FAILURE;
+	return 0;
 }
