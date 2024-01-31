@@ -94,17 +94,21 @@ int main(){
 	for(int i = 0; i < 1000; i++){
 		grid[i] = (int *)calloc(1000, sizeof(int ));
 	}
+
+	// Redo reading lines with https://cplusplus.com/reference/cstdio/scanf/
+	// Check https://www.reddit.com/r/adventofcode/comments/3vmltn/day_6_solutions/
+	// to understand better how scanf works	
 	// There was a segmentation fault because i was passing an
 	// unitialized char* as an argument to getInstruction. An
 	// unitilized pointer has no memory address.
-	char instruction = 's';
+	char instruction[LINESIZE];
 	char line[LINESIZE];
 	size_t length;
 	int initial_point[2], end_point[2];
 	unsigned int lights_on = 0, brightness = 0;
 	bool first_part = false;
 
-	while(fgets(line, LINESIZE, fd) != NULL){
+	/*while(fgets(line, LINESIZE, fd) != NULL){
 		getInstruction(line, &instruction, initial_point, end_point);
 		switch (instruction){
 			case '0':
@@ -114,6 +118,20 @@ int main(){
 				offGrid(grid, initial_point, end_point, first_part);
 				break;
 			case '2':
+				onGrid(grid, initial_point, end_point, first_part);
+				break;
+		}
+	}*/
+	while(fscanf(fd, "%[^0123456789]%d,%d through %d,%d\n", instruction, initial_point, initial_point+1, end_point, end_point+1) == 5){
+		printf("%c\n", instruction[strlen(instruction)-2]);
+		switch (instruction[strlen(instruction)-2]){
+			case 'e':
+				toggleGrid(grid, initial_point, end_point, first_part);
+				break;
+		       	case 'f':
+				offGrid(grid, initial_point, end_point, first_part);
+				break;
+			case 'n':
 				onGrid(grid, initial_point, end_point, first_part);
 				break;
 		}
