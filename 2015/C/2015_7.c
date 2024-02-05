@@ -5,6 +5,12 @@
 
 #define FILELINES 339
 
+/* THERE WAS A MISTAKE THAT COST ME A LOT OF TIME!
+ * THE BEHAVIOUR OF strcpy(origin str, dest str) IS
+ * UNDEFINED IF THE dest str HAS LESS LENGTH THAN origin str.
+ * IS BETTER TO ALLOCATE MORE SPACE TO STRINGS, SINCE strcpy
+ * ALSO COPIES THE NULL TERMINATING CHARACTER!*/
+
 typedef struct {
 	unsigned short int value;
 	int control;
@@ -118,7 +124,7 @@ int main(){
 			case 0:
 				readline = 0;
 				break;
-			case 3:
+			case 3: 
 				strcpy(assembly[i].operator, b);
 				strcpy(assembly[i].input1, a);
 				strcpy(assembly[i].output, c);
