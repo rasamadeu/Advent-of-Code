@@ -44,7 +44,7 @@ bool isNiceString2(char *string, int length){
 
 bool isNiceString1(char *string, int length){
 	
-	int	n_vowels = 0;
+	int n_vowels = 0;
 	bool consecutive_letters = false;
 	bool forbidden_sequence = false;
 	for(int i = 0; i < length - 1; i++){
@@ -85,6 +85,7 @@ int main(){
 	int counter = 0;
 
 	fd = fopen("input/2015_5_input.dat", "rt");
+	// Attemp to redo this with regex.h
 	// U WERE DOING length = getline(&line, &s, fd) != -1
 	// This would compare getline with -1 and would write
 	// true or false to length
@@ -94,10 +95,6 @@ int main(){
 		}
 	}
 	printf("%d\n", counter);
-	printf("%d\n", isNiceString2("qjhvhtzxzqqjkmpb", 16));
-	printf("%d\n", isNiceString2("xxyxx", 5));
-	printf("%d\n", isNiceString2("uurcxstgmygtbstg", 16));
-	printf("%d\n", isNiceString2("ieodomkazucvgmuy", 16));
 	free(line);
 	if(fd){
 		fclose(fd);
